@@ -23,13 +23,11 @@ class FormController extends AbstractController
 
             $session->set('username', $_POST['name']);
 
-            return $this->redirectToRoute('AboutMe');
+            return $this->redirectToRoute('AboutMeController');
         }
 
         //otherwise, go to controller
-        return $this->render('form/index.html.twig', [
-            'controller_name' => 'FormController',
-        ]);
+        return $this->render('form/index.html.twig');
     }
-    
+
 }

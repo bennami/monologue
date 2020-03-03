@@ -7,10 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AboutMe extends AbstractController
+class AboutMeController extends AbstractController
 {
     /**
-     * @Route("/", name="AboutMe")
+     * @Route("/", name="AboutMeController")
      */
     public function index()
     {
@@ -39,9 +39,7 @@ class AboutMe extends AbstractController
         }
 
         //otherwise, the user enters the homepage when he accesses the site for the first time
-        return $this->render('aboutMe/index.html.twig', [
-            'userName'=> $userName
-        ]);
+        return $this->render('aboutMe/index.html.twig', ['userName'=> $userName]);
     }
 
 }
