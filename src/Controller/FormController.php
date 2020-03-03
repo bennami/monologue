@@ -13,23 +13,23 @@ class HomepageController extends AbstractController
     public $name = 'hel';
 
     /**
-     * @Route("/", name="homepage")
+     * @Route("/form", name="form")
      */
     public function index()
     {
 
 
-
+        $session = new Session();
+        $getName = new AskName();
+        $getName->setName('unknown');
         if(isset($_POST['submitName'])) {
-            $getName = new AskName();
+
             $getName->setName($_POST['name']);
             $userName = $getName->getName();
 
-            $session = new Session();
-            $session->start();
             $session->set('name', $_POST['name']);
             $userName = $session->get('name');
-            return $this->redirectToRoute('learning', ['userName'=> $userName]);
+            return $this->redirectToRoute('homepage', ['userName'=> $userName]);
 
         }
 
