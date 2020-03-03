@@ -14,8 +14,6 @@ class AskName
      */
     private $Name;
 
-
-
     public function getName(): ?string
     {
         return $this->Name;
@@ -27,8 +25,4 @@ class AskName
         return $this;
     }
 
-    public function getLorem(){
-
-
-    }
 }

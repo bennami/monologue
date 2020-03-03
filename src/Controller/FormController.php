@@ -7,40 +7,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomepageController extends AbstractController
+class FormController extends AbstractController
 {
-
-    public $name = 'hel';
-
     /**
      * @Route("/form", name="form")
      */
     public function index()
     {
 
-
+        //start session
         $session = new Session();
-        $getName = new AskName();
-        $getName->setName('unknown');
+
+        //on button submit, set session name and redirect to homepage
         if(isset($_POST['submitName'])) {
 
-            $getName->setName($_POST['name']);
-            $userName = $getName->getName();
+            $session->set('username', $_POST['name']);
 
-            $session->set('name', $_POST['name']);
-            $userName = $session->get('name');
-            return $this->redirectToRoute('homepage', ['userName'=> $userName]);
-
+            return $this->redirectToRoute('AboutMe');
         }
 
-
-
-        return $this->render('homepage/index.html.twig', [
-            'controller_name' => 'HomepageController',
+        //otherwise, go to controller
+        return $this->render('form/index.html.twig', [
+            'controller_name' => 'FormController',
         ]);
     }
-
-
-
-
+    
 }
